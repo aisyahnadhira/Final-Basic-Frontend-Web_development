@@ -54,7 +54,6 @@ const pageAddBookMainContent = `<h2 class="text-2xl font-bold mb-4">Tambah Buku<
 async function handleClickEditButton(bookId) {
   try {
     // Ambil data buku dari server berdasarkan id, simpan hasilnya ke variabel currentBook
-    // TODO: answer here
 
     currentPage = 'edit';
     loadPage();
@@ -82,7 +81,7 @@ async function handleClickDeleteButton(bookId) {
 async function handleEditForm(event) {
   try {
     // gunakan preventDefault untuk mencegah browser melakukan reload halaman
-    // TODO: answer here
+    event.preventDefault();
 
     /* 
       Ambil data dari form, simpan ke dalam variabel book
@@ -94,10 +93,15 @@ async function handleEditForm(event) {
         quantity: 10,
       }
     */
-    // TODO: answer here
+      const book = {
+        title : document.getElementById('title'),
+        author : document.getElementById('author'),
+        year : parseInt(document.getElementById('year')),
+        quantity : parseInt(document.getElementById('quantity')),
+      }
 
     // panggil function editBook dengan parameter book
-    // TODO: answer here
+    await editBook(book);
 
     currentBook = null;
 
@@ -112,7 +116,7 @@ async function handleEditForm(event) {
 async function handleAddForm(event) {
   try {
     // gunakan preventDefault untuk mencegah browser melakukan reload halaman
-    // TODO: answer here
+    event.preventDefault();
 
     /*
       Ambil data dari form, simpan ke dalam variabel book
@@ -124,10 +128,16 @@ async function handleAddForm(event) {
         quantity: 10,
       }
     */
-    // TODO: answer here
+
+    const book = {
+      title : document.getElementById('title'),
+      author : document.getElementById('author'),
+      year : parseInt(document.getElementById('year')),
+      quantity : parseInt(document.getElementById('quantity')),
+    }
 
     // panggil function addBook dengan parameter book
-    // TODO: answer here
+    await addBook(book)
 
     currentPage = 'home';
     loadPage();
