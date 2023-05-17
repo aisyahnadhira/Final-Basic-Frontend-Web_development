@@ -248,7 +248,10 @@ async function fetchBooks() {
       fetch data buku dari http://localhost:3333/books
       simpan hasilnya ke variabel global books
     */
-    // TODO: answer here
+    const response = await fetch('http://localhost:3333/books');
+
+    books = await response.json();
+
   } catch (error) {
     console.log(error);
     console.log('Terjadi kesalahan saat mengambil data buku');
@@ -261,7 +264,12 @@ async function addBook(book) {
       tambahkan buku baru ke http://localhost:3333/books dengan method POST
       body yang dikirim adalah book yang dikirimkan sebagai parameter function
     */
-    // TODO: answer here
+    const response = await fetch('http://localhost:3333/books',{
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'
+    },
+      body : JSON.stringify(book)
+    });
   } catch (error) {
     console.log(error);
     console.log('Terjadi kesalahan saat menambah buku');
@@ -274,7 +282,13 @@ async function editBook(book) {
       ubah buku yang ada di http://localhost:3333/books/:id dengan method PUT
       body yang dikirim adalah book yang dikirimkan sebagai parameter function
     */
-    // TODO: answer here
+    const response = await fetch(`http://localhost:3333/books/${books.id}`,{
+      method: 'PUT',
+      headers: {'content-type': 'application/json'
+      },
+    body : JSON.stringify(book),
+    })
+    
   } catch (error) {
     console.log(error);
     console.log('Terjadi kesalahan saat mengubah buku');
