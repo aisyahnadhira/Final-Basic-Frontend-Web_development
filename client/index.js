@@ -301,7 +301,12 @@ async function deleteBook(bookId) {
       hapus buku yang ada di http://localhost:3333/books/:id dengan method DELETE
       id buku yang akan dihapus dikirimkan sebagai parameter function
     */
-    // TODO: answer here
+    const response = await fetch(`http://localhost:3333/books/${bookId}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   } catch (error) {
     console.log(error);
     console.log('Terjadi kesalahan saat menghapus buku');
